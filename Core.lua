@@ -16,7 +16,7 @@ function ConnectionBase:Invoke(...)
     end
 end
 
-function InvokedBase:Connect(F)
+function InvokedBase:Connect(Function)
     local Connection = self.INTERNAL_Reference
     local Timestamp = os.clock()
     local Data = {
@@ -24,7 +24,7 @@ function InvokedBase:Connect(F)
             self.Connected = false
             Connection.Listeners[Timestamp] = nil
         end,
-        Callback = F,
+        Callback = Function,
         Connected = true
     }
     Connection.Listeners[Timestamp] = Data
